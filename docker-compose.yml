@@ -1,0 +1,15 @@
+services:
+  php:
+    build: 
+      context: ./images/php
+    container_name: ct_php
+    volumes:
+      - ./volume_app:/var/www/html
+  nginx:
+    image: nginx:latest
+    container_name: ct_nginx
+    volumes:
+      - ./images/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./volume_app:/var/www/html
+    ports:
+      - "8080:80"
