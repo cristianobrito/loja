@@ -213,3 +213,16 @@ RUN mkdir -p /var/log \
     && chown www-data:www-data /var/log/php_errors.log \
     && echo "log_errors = On" >> /usr/local/etc/php/conf.d/docker-php-error.ini \
     && echo "error_log = /var/log/php_errors.log" >> /usr/local/etc/php/conf.d/docker-php-error.ini
+
+# Copia o entrypoint para dentro do container
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Define entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Define diretório de trabalho
+WORKDIR /var/www/html
+
+# Exposição da porta (opcional)
+EXPOSE 9000
