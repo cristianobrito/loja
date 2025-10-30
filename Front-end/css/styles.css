@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* Reseta as margens e paddings do HTML e body, define altura total da tela e aplica box-sizing para incluir padding e border no tamanho do elemento */
+html, body {
+  margin:  0px;             /* remove margens padrão do navegador */
+  padding: 0px;             /* remove padding padrão do navegador */
+  height: 100%;             /* define altura total da janela      */
+  box-sizing: border-box;   /* inclui borda e padding no cálculo do tamanho do elemento */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Container principal do dashboard */
+.dashboard-container{
+    display: grid;                      /* define que será um grid container */
+    grid-template-columns: 1fr 6fr 2fr; /* 3 colunas: 1 fr para menu, 6 fr para conteúdo, 3 fr para painel direito */
+    grid-template-areas: "a m p";       /* define nomes das áreas do grid: aside (a), main (m), painel direito (p) */
+    gap: 20px;                          /* espaçamento entre colunas e linhas */
+    height: 100vh;                      /* altura do container igual a altura da viewport (tela) */
+    overflow: hidden;                   /* evita scroll, esconde excesso de conteúdo */
+    margin: 0px 50px 0px 25px;          /* margem externa do dashboard: topo 5px, direita 50px, baixo 5px, esquerda 25px */
+    box-sizing: border-box;  
+  }
+
+/* Estilo do menu lateral (aside) */
+aside{
+    /* background-color: chartreuse; */
+    background-color: #f1f1f1;  /* cor de fundo do menu lateral */
+    grid-area: a;                 /* define que ocupa a área 'a' no grid principal */
+    display: grid;                /* transforma o aside em grid para posicionar itens */
+    grid-template-rows: repeat(8, 1fr); /*divide o aside em 8 linhas iguais */
+    padding: 3px;                      /* espaçamento interno no topo e baixo */
+    border-radius: 25px;               /* cantos arredondados do menu lateral */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Grid dentro do aside para os ícones e labels */
+.nav-aside{
+  /*grid-area: a;  ocupa a mesma área do aside (não é necessário aqui, mas não prejudica) */
+  display: grid;/* transforma em grid */
+  grid-template-rows: repeat(8, 1fr);/* divide em 8 linhas iguais */
+  align-items: center;               /* alinha os itens verticalmente no centro da linha */
+  padding: 3px 5px;                /* padding interno: topo/baixo 10px, lateral 30px */
+  gap: 5px;                          /* espaço entre os quadradinhos */
+  
+}
+
+/* Estilo dos quadradinhos de cada ícone */
+.ico-personal{
+    display: grid;                         /* transforma cada item em grid para poder centralizar ícone e label */
+    color: coral;                        /* cor inicial do conteúdo (texto e ícone) */
+    cursor: pointer;                       /* muda o cursor para mãozinha ao passar por cima */
+    transition: transform 0.5s, color 0.5s;/* animação suave para transformação e mudança de cor */
+    place-items: center;                   /* centraliza ícone e texto */
+    row-gap: 5px;                          /* espaço entre linhas dentro do grid (ícone e label) */
+    color: inherit;                        /* herda cor do pai */
+    background-color: rgba(255, 255, 255, 0.2);/* fundo branco semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.3);/* borda branca semi-transparente */
+    border-radius: 10px;                         /* cantos arredondados */
+    padding: 10px;                               /* espaçamento interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);  /* sombra leve embaixo do quadrado */
+    width: 50px;
+    /* height: 50px;   */
+    margin: 0px 25px;
+    /* padding: 10px; */
+  }
+
+
+/* Efeito ao passar o mouse sobre os quadradinhos */
+.ico-personal:hover {
+  color: coral;        /* muda a cor        */
+  transform: scale(1.2); /* aumenta levemente */
+}
+
+/* Estilo do link dentro do quadrado */
+.ico-personal a {
+  display: grid;          /* mantém grid dentro do link */
+  place-items: center;    /* centraliza ícone + label */
+  text-decoration: none;  /* remove underline */
+  /* color: inherit;*/
+  color: rgb(181, 173, 170);  /* cor do ícone e label dentro do link */
+}
+
+/* Hover do link dentro do quadrado */
+.ico-personal a:hover {
+  text-decoration: none;  /* garante que não apareça sublinhado */
+  color: inherit;         /* herda cor do quadradinho */
+  transform: scale(1.2);  /* aumenta tamanho do link levemente */
+  display: grid;
+  place-items: center;   /* mantém ícone + label centralizados */
+}
+
+/* Estilo do texto abaixo dos ícones */
+.icon-label {
+  font-size: 10px; /* tamanho da fonte */
+  /* color: #555; */
+  color: inherit;  /* herda cor do pai (quadrado) */
+}
+
+/* Estilo específico do N */
+.title-sidebar {
+  grid-row: 2;     /* coloca o N na segunda linha do grid */
+  font-size: 30px; /* tamanho da letra */
+  color: coral;  /* cor da letra */
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  margin-left: 20px;
+  /* padding-left: 30px; */
+  padding: 0px 20px 0px 5px;
+  
+}
+
+
+/* Estilo de cada ícone específico */
+.bars-icon {
+  grid-row: 3;     /* posição na terceira linha */
+  font-size: 10px; /* tamanho do ícone */
+}
+
+.heart-icon {
+  grid-row: 4;     /* posição na quarta linha */
+  font-size: 10px;
+}
+
+.user-icon {
+  grid-row: 5;     /* posição na quinta linha */
+  font-size: 10px;
+}
+
+.gear-icon {
+  grid-row: 6;      /* posição na sexta linha */
+  font-size: 10px;
+}
+
+
+/* Estilo da área principal do dashboard */
+main{
+    /* background-color: #f1f1f1;     */
+    border-radius: 15px;          
+    display: grid;
+    /* grid-template-columns: 2fr 1fr; */
+    grid-template-rows: 50px 1fr 1fr;
+    grid-area: m;
+    padding: 0px 20px 5px 20px;
+    margin: 25px 10px;
+    gap: 10px;
+  
+}
+
+.widgets{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin-bottom: 20px;
+
+}
+
+.widgets-col-1{
+  background-color: rgb(72, 0, 255);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  height: 150px;
+}
+
+.exam-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.widgets-col-2{
+  background-color: blanchedalmond;
+  border-radius: 5px;
+  gap: 5px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: 150px;
+}
+
+.widgets-col-3{
+  background-color:rgb(227, 225, 197);
+  border-radius: 5px;
+  gap: 5px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: 150px;
+}
+
+.widgets-col-4-group{
+  /* background-color: #eee; */
+  margin: 5px;
+  padding: 5px;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 15px;
+}
+
+.widgets-col-5{
+  display: grid;
+  height: 150px;
+  grid-column: 2;
+  padding-left: 50px;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.widgets-col-6{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1 / -1;
+  height: 80px;
+}
+
+#bell{
+  position: absolute;
+  right: 0;
+  top: 0; 
+  margin: 5px;
+  padding: 10px;
+}
+
+#hora-work{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 5px;
+  padding: 10px;
+}
+
+.group-homework{
+  /* background-color: rgb(254, 96, 38); */
+  background-color: coral;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
+  padding: 10px 10px 25px 10px;
+}
+
+.bandeira-box{
+  font-size: 30px;
+  margin: 5px 5px 0px 5px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  gap: 5px;
+  text-align: center;
+  /* color: rgb(254, 96, 38); */
+  color: coral;
+}
+
+.pencil-box{
+  background-color: coral;
+  font-size: 25px;
+  margin: 5px 5px 0px 5px;
+  padding: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  gap: 5px;
+  text-align: center;
+  align-content: center;
+}
+
+.gramar-dictonary{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  
+}
+
+.fa-minus{
+  color: coral;
+}
+
+.gramar-dictonary-texto{
+  color: rgb(149, 153, 157);
+  font-size: 10px;
+}
+
+.logo{
+  margin: 5px;
+  padding:5px;
+  /* font-size: 50px; */
+  text-align: center;
+  
+}
+
+.gif-logo{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-fundo{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.like-share-sub{
+  color: rgb(149, 153, 157);
+  font-size: 10px;
+  text-align: center;
+  
+}
+
+.promocao{
+  color: rgb(149, 153, 157);
+  font-size: 10px;
+  text-align: center;
+}
+
+.table-wrapper{
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.custom-table{
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  background-color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 9px;
+}
+
+.custom-table thead{
+  background-color:coral; /* Cor estilo Bootstrap (roxo) */
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.custom-table th, .custom-table td {
+  padding: 12px 20px;
+  text-align: left;
+}
+
+.custom-table tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f3e8ff; /* tom claro do roxo */
+}
+
+
+.custom-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.custom-table td {
+  color: #555;
+}
+
+.container-3 span {
+  background-color: transparent;
+  display: block;
+  /* color: #6f42c1; */
+  font-weight: 700;
+  font-size: 25px;
+  text-align: center;
+}
+
+.logo-fundo {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.logo-fundo i {
+  color: #6f42c1;
+}
+
+.dashboard-title{
+  font-size: 24px; 
+  font-weight: 700;
+  margin: 0; 
+  line-height: 1.2; 
+}
+
+.top-cards{
+  border-radius: 5px;
+  display: grid;
+  margin: 10px;
+  padding: 3px;
+  height: 30px;
+  align-content: end; 
+}
+
+.top-card-1-cor{
+  color: #dedede;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 5px;
+}
+
+#dead-text{
+  color: #cdcccc;
+  font-size: 13px;
+  padding: 5px;
+}
+
+#spanish-text{
+  color: #cdcccc;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#start-test{
+  color: #cdcccc;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 5px;
+  padding: 10px;
+  font-size: 10px;
+}
+
+/* painel direito */
+/* .right-panel{
+    background-color: #f1f1f1; 
+    border-radius: 25px;  
+    display: grid;
+    grid-area: p; 
+    gap: 5px;     
+} */
+
+.chart-container{
+  position: relative;
+  height: 100px;
+  width: 100px;
+}
+
+.circular-chart{
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.bg{
+  fill: none;
+  stroke: #eee;
+  stroke-width: 10;
+}
+
+.progress{
+  fill: none;
+  stroke: coral;
+  stroke-width: 10;
+  stroke-dasharray: 283; 
+  stroke-dashoffset: 70;
+  transition: stroke-dashoffset 3s;
+}
+
+.percent{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: bold;
+  color: coral;
+}
+
+/* FIM painel direito */
+
+/* .container-3{
+  background-color: aqua;
+} */
+
+/* .container-4{
+  background-color: darkolivegreen;
+}  */

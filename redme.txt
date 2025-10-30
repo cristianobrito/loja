@@ -1,1 +1,730 @@
 inicio  de tudo
+
+https://blog.pixelfreestudio.com/how-to-use-css-grid-for-customizable-dashboard-layouts/?utm_source=chatgpt.com
+
+
+criando passo um decidindo blocos grandes
+  <header id="topo">
+    <!-- Título e menu do topo -->
+  </header>
+
+  <aside id="sidebar">
+    <!-- Menu lateral -->
+  </aside>
+
+  <main id="conteudo">
+    <section id="dashboard-principal">
+      <!-- Cards e gráficos -->
+    </section>
+    <section id="estatisticas">
+      <!-- Gráficos menores -->
+    </section>
+  </main>
+
+  <footer id="rodape">
+    <!-- Rodapé -->
+  </footer>
+
+  =====================================================================
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>DASHBOARD</title>
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+      <div class="nav-aside">
+
+        <div class="ico-personal title-sidebar">
+          <a href="N.html">
+            <h1 class="title-sidebar">N.</h1>
+          </a>
+        </div>
+
+        <div class="ico-personal bars-icon">
+          <a href="Menu.html">
+            <i class="fa-solid fa-bars"></i>
+            <span class="icon-label">Menu</span>
+          </a>
+        </div>
+
+        <div class="ico-personal heart-icon">
+          <a href="Favoritos.html">
+            <i class="fa-solid fa-heart icone-ex-grande"></i>
+            <span class="icon-label">Favoritos</span>
+          </a>
+        </div>
+
+        <div class="ico-personal user-icon">
+          <a href="Login.html">
+            <i class="fa-solid fa-user"></i>
+            <span class="icon-label">Login</span>
+          </a>
+        </div>
+        
+        <div class="ico-personal gear-icon">
+          <a href="Configuracoes.html">
+            <i class="fa-solid fa-gear icone-grande"></i>
+            <span class="icon-label">Configuracoes</span>
+          </a>
+        </div>
+        
+      </div>
+    </aside>
+    <!-- FIM DO MENU LATERAL -->
+     
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+    <!-- SEÇÃO 1 -->
+    <section class="widgets">
+        
+      <div class="title">
+        <h1>Meu Dashboard</h1>
+      </div>
+
+    <section class="top-cards">
+      <div class="top-card-1">
+        <h3>preços da bolsa:</h3>
+
+        <h1 class="top-card-1-cor">EXAM - UNIT 5</h1>
+
+        <h3>R$29,99</h3>
+       
+        <div class="chart-container">
+          <svg class="chart" width="100" height="100">
+            <circle class="bg" cx="50" cy="50" r="45"></circle>
+            <circle class="progress" cx="50" cy="50" r="45"></circle>
+          </svg>
+          <div class="percent">
+            <p>+81%</p>
+          </div>
+        </div>
+        
+          <p>fala agora:</p>
+      </div>
+
+
+      <div class="top-card-2">
+        <h3>
+          preços da bolsa 2:
+        </h3>
+
+        <h1 class="top-card-2-cor">
+          EXAM - UNIT 6
+        </h1>
+
+        <h3>
+          R$39,99
+        </h3>
+
+        <p>
+          fala agora:
+        </p>
+
+        <div>
+          <svg>
+            <circle cx="38" cy="38" r="36"></circle>
+          </svg>
+          <div class="percent">
+            <p>+78%</p>
+          </div>
+        </div>
+      
+      </div>
+
+
+      
+      <div class="top-card-3">
+        <h3>
+          preços da bolsa 3:
+        </h3>
+
+        <h1 class="top-card-3-cor">
+          EXAM - UNIT 7
+        </h1>
+
+        <h3>
+          R$59,99
+        </h3>
+
+        <p>
+          fala agora:
+        </p>
+        <div>
+          <svg>
+            <circle cx="38" cy="38" r="36"></circle>
+          </svg>
+          <div class="percent">
+            <p>+61%</p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    </section>
+
+    </main>
+
+ <!-- COLUNA 3 -->
+  <div class="right-panel">
+    <h1>ultima coluna</h1>
+  </div>
+
+</div>
+
+
+</body>
+</html>
+  
+
+  ====================================================================
+
+  /* Reseta as margens e paddings do HTML e body, define altura total da tela e aplica box-sizing para incluir padding e border no tamanho do elemento */
+html, body {
+  margin:  0;             /* remove margens padrão do navegador */
+  padding: 0;             /* remove padding padrão do navegador */
+  height: 100%;           /* define altura total da janela      */
+  box-sizing: border-box; /* inclui borda e padding no cálculo do tamanho do elemento */
+}
+
+/* Container principal do dashboard */
+.dashboard-container{
+    display: grid;                      /* define que será um grid container */
+    grid-template-columns: 1fr 6fr 3fr; /* 3 colunas: 1 fr para menu, 6 fr para conteúdo, 3 fr para painel direito */
+    grid-template-areas: "a m p";       /* define nomes das áreas do grid: aside (a), main (m), painel direito (p) */
+    gap: 20px;                          /* espaçamento entre colunas e linhas */
+    height: 100vh;                      /* altura do container igual a altura da viewport (tela) */
+    overflow: hidden;                   /* evita scroll, esconde excesso de conteúdo */
+    margin: 0px 50px 0px 25px;          /* margem externa do dashboard: topo 5px, direita 50px, baixo 5px, esquerda 25px */
+}
+
+/* Estilo do menu lateral (aside) */
+aside{
+    /* background-color: chartreuse; */
+    background-color: #f1f1f1;  /* cor de fundo do menu lateral */
+    grid-area: a;                 /* define que ocupa a área 'a' no grid principal */
+    display: grid;                /* transforma o aside em grid para posicionar itens */
+    grid-template-rows: repeat(8, 1fr);/* divide o aside em 8 linhas iguais */
+    padding: 10px 0;                   /* espaçamento interno no topo e baixo */
+    border-radius: 25px;               /* cantos arredondados do menu lateral */
+}
+
+/* Estilo dos quadradinhos de cada ícone */
+.ico-personal{
+    display: grid;                         /* transforma cada item em grid para poder centralizar ícone e label */
+    color: coral;                        /* cor inicial do conteúdo (texto e ícone) */
+    cursor: pointer;                       /* muda o cursor para mãozinha ao passar por cima */
+    transition: transform 0.5s, color 0.5s;/* animação suave para transformação e mudança de cor */
+    place-items: center;                   /* centraliza ícone e texto */
+    row-gap: 5px;                          /* espaço entre linhas dentro do grid (ícone e label) */
+    color: inherit;                        /* herda cor do pai */
+    background-color: rgba(255, 255, 255, 0.2);/* fundo branco semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.3);/* borda branca semi-transparente */
+    border-radius: 10px;                         /* cantos arredondados */
+    padding: 10px;                               /* espaçamento interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);  /* sombra leve embaixo do quadrado */
+}
+
+
+/* Efeito ao passar o mouse sobre os quadradinhos */
+.ico-personal:hover {
+  color: coral;        /* muda a cor        */
+  transform: scale(1.2); /* aumenta levemente */
+}
+
+/* Estilo do link dentro do quadrado */
+.ico-personal a {
+  display: grid;          /* mantém grid dentro do link */
+  place-items: center;    /* centraliza ícone + label */
+  text-decoration: none;  /* remove underline */
+  /* color: inherit;*/
+  color: rgb(181, 173, 170);  /* cor do ícone e label dentro do link */
+}
+
+/* Hover do link dentro do quadrado */
+.ico-personal a:hover {
+  text-decoration: none;  /* garante que não apareça sublinhado */
+  color: inherit;         /* herda cor do quadradinho */
+  transform: scale(1.2);  /* aumenta tamanho do link levemente */
+  display: grid;
+  place-items: center;   /* mantém ícone + label centralizados */
+}
+
+/* Estilo do texto abaixo dos ícones */
+.icon-label {
+  font-size: 14px; /* tamanho da fonte */
+  /* color: #555; */
+  color: inherit;  /* herda cor do pai (quadrado) */
+}
+
+
+
+/* Grid dentro do aside para os ícones e labels */
+.nav-aside{
+  grid-area: a; /* ocupa a mesma área do aside (não é necessário aqui, mas não prejudica) */
+  display: grid;/* transforma em grid */
+  grid-template-rows: repeat(8, 1fr);/* divide em 8 linhas iguais */
+  align-items: center;               /* alinha os itens verticalmente no centro da linha */
+  padding: 10px 30px;                /* padding interno: topo/baixo 10px, lateral 30px */
+  gap: 5px;                          /* espaço entre os quadradinhos */
+  
+}
+
+/* Estilo específico do N */
+.title-sidebar {
+  grid-row: 2;     /* coloca o N na segunda linha do grid */
+  font-size: 30px; /* tamanho da letra */
+  color: coral;  /* cor da letra */
+}
+
+
+/* Estilo de cada ícone específico */
+.bars-icon {
+  grid-row: 3;     /* posição na terceira linha */
+  font-size: 10px; /* tamanho do ícone */
+}
+
+.heart-icon {
+  grid-row: 4;     /* posição na quarta linha */
+  font-size: 10px;
+}
+
+.user-icon {
+  grid-row: 5;     /* posição na quinta linha */
+  font-size: 10px;
+}
+
+.gear-icon {
+  grid-row: 6;      /* posição na sexta linha */
+  font-size: 10px;
+}
+
+
+/* Estilo da área principal do dashboard */
+main{
+    background-color: #f1f1f1;    
+    border-radius: 25px;          
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-area: m;
+    padding: 20px;
+    margin: 5px 10px;
+    gap: 10px;  
+}
+
+.top-card-1,
+.top-card-2,
+.top-card-3 {
+  display: grid; 
+  /* grid-template-rows: auto 1fr auto;  */
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.top-card-1 { background-color: rgb(85, 0, 255); }
+.top-card-2 { background-color: rgb(255, 132, 0); }
+.top-card-3 { background-color: rgb(255, 0, 230); }
+
+.top-card-1:hover,
+.top-card-2:hover,
+.top-card-3:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.top-card-1-cor{
+  color: #f1f1f1;
+}
+
+h3{
+  color: bisque;
+  padding: 10px;
+  margin: 10px;
+}
+
+.top-cards{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-area: m;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.5s, box-shadow 0.5s;
+  width: 100%;
+  height: auto;
+  align-items: stretch;
+}
+
+.top-card-1:hover{
+    transition: transform 0.5s, color 0.5s;
+    box-shadow:  0 0 20px rgb(0, 0, 0); 
+}
+
+.main-content:hover{
+    box-shadow: 0 0 20px blueviolet; 
+}
+
+.chart-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 15px auto; /* centraliza no card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart {
+  transform: rotate(-90deg); /* faz começar do topo */
+}
+
+
+.chart circle {
+  fill: none;
+  stroke-width: 10;
+  cx: 50;
+  cy: 50;
+  r: 45;
+}
+
+
+.chart .bg {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+/* Círculo de progresso */
+.chart .progress {
+  stroke: #00ffcc;
+  stroke-dasharray: 283; /* 2πr (r = 45) */
+  stroke-dashoffset: 283;
+  stroke-linecap: round;
+  animation: fillProgress 2s ease-out forwards;
+}
+
+/* Percentual no centro */
+.percent {
+  position: absolute;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Animação de preenchimento */
+@keyframes fillProgress {
+  from {
+    stroke-dashoffset: 283;
+  }
+  to {
+    stroke-dashoffset: calc(283 - (283 * 81) / 100); /* exemplo: 81% */
+  }
+}
+
+/* Estilo do painel direito */
+.right-panel{
+    background-color: brown;  
+    border-radius: 25px;        
+}
+
+
+
+================================================================
+
+estudo
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      display: grid;
+      grid-template-columns: 250px 1fr 300px;
+      height: 100vh;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Barra lateral */
+    .sidebar {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Área principal */
+    .main {
+      display: grid;
+      grid-template-rows: 1fr;
+      gap: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .progress-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: conic-gradient(#e91e63 0% 70%, #eee 70% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px auto;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    /* Coluna direita */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .right-column .card {
+      text-align: left;
+    }
+
+    .right-column .card h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .right-column .card p {
+      font-size: 14px;
+      color: #666;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1>N.</h1>
+    <a href="#"><span>📋</span> Menu</a>
+    <a href="#"><span>❤️</span> Favoritos</a>
+    <a href="#"><span>👤</span> Login</a>
+  </div>
+
+  <!-- Área principal -->
+  <div class="main">
+    <div class="cards">
+      <div class="card">
+        <h2>preços da bolsa:</h2>
+        <p>EXAM – UNIT 5</p>
+        <div class="progress-circle">+70%</div>
+        <div class="price">R$29,99</div>
+        <a href="#">fala agora ➔</a>
+      </div>
+
+      <div class="card">
+        <h2>Activity Feed</h2>
+        <p>User activities and updates will appear here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coluna direita -->
+  <div class="right-column">
+    <div class="card">
+      <h3>💡 Smart Recommendations</h3>
+      <p>Could not load recommendations at this time.</p>
+    </div>
+    <div class="card">
+      <h3>ultima coluna div 3</h3>
+      <p>Content for this section. Can be used for quick links or stats.</p>
+    </div>
+    <div class="card">
+      <h3>ultima coluna div 4</h3>
+      <p>More content can be placed here, such as settings or profile info.</p>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+=======================================================================
+
+https://www.youtube.com/watch?v=RhUuMl3R1PE&t=1972s
+
+https://fontawesome.com/icons?o=r 
+
+=========================================================================
+
+requisições fetch
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data); // mostra tudo no console
+  })
+  .catch(error => console.error('Erro:', error));
+
+
+fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
+  .then(response => response.json())
+  .then(json => console.log(json))
+Promise {<pending>}[[Prototype]]: 
+Promise[[PromiseState]]: 
+"fulfilled"[[PromiseResult]]: undefined
+
+como pegar os campos
+
+fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
+  .then(response => response.json())
+  .then(json => {
+    const ticker = json.ticker; // pega o objeto interno
+    console.log("Preço de compra:", ticker.buy);
+    console.log("Preço de venda:", ticker.sell);
+    console.log("Último preço:", ticker.last);
+    console.log("Alta do dia:", ticker.high);
+    console.log("Baixa do dia:", ticker.low);
+  })
+  .catch(error => console.error('Erro:', error));
+
+
+=========================================================
+
+como exibir os dados no dashboard
+
+<div id="dadosBTC"></div>
+
+<script>
+fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
+  .then(response => response.json())
+  .then(json => {
+    const t = json.ticker;
+    document.getElementById("dadosBTC").innerHTML = `
+      <h2>Bitcoin (BRL)</h2>
+      <p>💰 Último preço: R$ ${t.last}</p>
+      <p>⬆️ Alta do dia: R$ ${t.high}</p>
+      <p>⬇️ Baixa do dia: R$ ${t.low}</p>
+      <p>📈 Volume: ${t.vol}</p>
+    `;
+  });
+</script>
+
+===================================================================
+
+tipos de visualização
+
+Tipo de dado	Exibição ideal
+Valores que mudam no tempo	Gráfico de linha
+Comparação entre valores	Barras ou colunas
+Percentuais	Donut ou gauge
+Um número principal	Card grande / KPI
+
+===================================================================
+
+chamar varias apis
+
+Promise.all([
+  fetch('https://api1.com/'),
+  fetch('https://api2.com/')
+])
+  .then(responses => Promise.all(responses.map(r => r.json())))
+  .then(([dados1, dados2]) => {
+    // usa dados1 e dados2 juntos
+  });
+
+=====================================================================
+
+https://www.mercadobitcoin.com.br/api-doc/ 
+
+
+https://api.mercadobitcoin.net/api/v4/docs
+
+https://jsonplaceholder.typicode.com/
+
+https://www.mercadobitcoin.net/api/BTC/ticker/
+
+https://www.mercadobitcoin.com.br/
+
+https://www.mercadobitcoin.com.br/criptomoedas/bitcoin
+
+https://publicapis.io/mercadobitcoin-api
+
+https://jsonplaceholder.typicode.com/guide/
+
+https://api.mercadobitcoin.net/api/v4/docs#tag/Wallet/paths/~1accounts~1{accountId}~1wallet~1{symbol}~1withdraw/get
+
+=======================================================================
+
