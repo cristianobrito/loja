@@ -479,6 +479,14 @@ main{
   color: coral;
 }
 
+
+.container-tabela{
+  margin: 100px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+}
 /* FIM painel direito */
 
 /* .container-3{

@@ -1,21 +1,22 @@
 version: "3.8"
 
 services:
-  app:                             # app é o container Node (mapeamos apenas back-end com ./:/app).
-    build: .
+  app:
+    build: ./Back-end
     container_name: loja-backend-app
     restart: unless-stopped
     env_file:
-      - .env
+      - ./Back-end/.env
     ports:
       - "3000:3000"
     volumes:
-      - ./:/app                      # mapeia só a pasta back-end
-      - /app/node_modules            # garante node_modules no container
+      - ./Back-end:/app            # mapeia backend
+      - ./Front-end:/app-frontend  # mapeia frontend
+      - /app/node_modules
     depends_on:
       - db
 
-  db:                               # db é o MySQL com um volume persistente db_data.
+  db:
     image: mysql:8.0
     container_name: loja-mysql
     restart: unless-stopped
@@ -26,11 +27,11 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-      - ./src/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./Back-end/src/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
       - "3306:3306"
 
-  adminer:                 # adminer é uma interface web para administrar o banco (acessível em http://localhost:8080).
+  adminer:
     image: adminer
     container_name: loja-adminer
     restart: unless-stopped
@@ -39,3 +40,4 @@ services:
 
 volumes:
   db_data:
+=============================================================================

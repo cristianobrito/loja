@@ -70,3 +70,38 @@ fetch('http://localhost:3000/api/products')
   })
 
    .catch(err => console.error("Erro:", err));
+
+//==================================
+// async function carregarProdutos() {
+//       try {
+//         const resposta = await fetch('http://localhost:3000/api/products');
+//         const produtos = await resposta.json();
+//         const tbody = document.getElementById("tabela-dados");
+
+//         tbody.innerHTML = "";
+
+//         produtos.forEach(prod => {
+//           const tr = document.createElement('tr');
+//           tr.innerHTML = `
+//             <td>${prod.id}</td>
+//             <td>${prod.name}</td>
+//             <td>R$ ${Number(prod.price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+//             <td>${Number(prod.variation).toFixed(2)}%</td>
+//           `;
+//           tbody.appendChild(tr);
+//         });
+//       } catch (err) {
+//         console.error("Erro ao carregar produtos:", err);
+//       }
+//     }
+
+//     carregarProdutos();
+
+
+//==================================
+
+// document.querySelectorAll('.ticker').forEach(ticker => {
+//   ticker.addEventListener('click', () => {
+//     window.location.href = '/html/Favoritos.html';
+//   });
+// });
