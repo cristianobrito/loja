@@ -8,6 +8,29 @@ fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
     `;
   });
 
+function atualizarBTC() {
+fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
+  .then(response => response.json())
+  .then(json => {
+    const t = json.ticker;
+    document.getElementById("dadosBtc2").innerHTML = `
+      <span>Bitcoin (BRL)(BTC)</span>
+       <div class="btc-linha">
+         <p>Baixa do dia: <strong>R$ ${parseFloat(t.low).toLocaleString('pt-BR')}</strong></p>
+         <p>Alta do dia: <strong>R$ ${parseFloat(t.high).toLocaleString('pt-BR')}</strong></p>
+       </div>
+    `;
+
+    const randomPercent = Math.floor(Math.random() * 100);
+    document.querySelector("#percent strong").textContent = `${randomPercent}%`;
+    document.getElementById("progress-fill").style.width = `${randomPercent}%`;
+  })
+  .catch(err => console.error("Erro ao buscar BTC:", err));
+}
+setInterval(atualizarBTC, 10000);
+
+atualizarBTC();
+
 fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
     .then(response => response.json())
     .then(json => {
@@ -17,36 +40,6 @@ fetch("https://www.mercadobitcoin.net/api/BTC/ticker/")
         `;
     })
 
-// fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
-//     .then(response => response.json())
-//     .then(posts => {
-//       const tbody = document.getElementById("tabela-dados");
-//       tbody.innerHTML = "";
-
-//     posts.forEach((post, index) => {
-//       const tr = document.createElement('tr');
-
-//       const tdAtivo = document.createElement('td');   
-//       tdAtivo.textContent = post.title.substring(0, 20);
-
-//       const tdPreco = document.createElement('td');
-//       tdPreco.textContent = `R$ ${(Math.random() * 100000).toFixed(2)}`; // preço fake pra exemplo
-
-//       const tdVariacao = document.createElement('td');
-//       tdVariacao.textContent = `${(Math.random() * 5 - 2.5).toFixed(2)}%`; // variação fake entre -2.5% e +2.5%
-
-//       // adiciona os tds ao tr
-//       tr.appendChild(tdAtivo);
-//       tr.appendChild(tdPreco);
-//       tr.appendChild(tdVariacao);
-
-//       // adiciona o tr ao tbody
-//      tbody.appendChild(tr);
-
-//     });
-// })
-
-  // .catch(error => console.error("Erro:", error));
 
 fetch('http://localhost:3000/api/products')
   .then(r => r.json())
@@ -70,38 +63,3 @@ fetch('http://localhost:3000/api/products')
   })
 
    .catch(err => console.error("Erro:", err));
-
-//==================================
-// async function carregarProdutos() {
-//       try {
-//         const resposta = await fetch('http://localhost:3000/api/products');
-//         const produtos = await resposta.json();
-//         const tbody = document.getElementById("tabela-dados");
-
-//         tbody.innerHTML = "";
-
-//         produtos.forEach(prod => {
-//           const tr = document.createElement('tr');
-//           tr.innerHTML = `
-//             <td>${prod.id}</td>
-//             <td>${prod.name}</td>
-//             <td>R$ ${Number(prod.price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-//             <td>${Number(prod.variation).toFixed(2)}%</td>
-//           `;
-//           tbody.appendChild(tr);
-//         });
-//       } catch (err) {
-//         console.error("Erro ao carregar produtos:", err);
-//       }
-//     }
-
-//     carregarProdutos();
-
-
-//==================================
-
-// document.querySelectorAll('.ticker').forEach(ticker => {
-//   ticker.addEventListener('click', () => {
-//     window.location.href = '/html/Favoritos.html';
-//   });
-// });
