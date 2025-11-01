@@ -24,6 +24,8 @@ app.get('/', (req, res) => res.sendFile(path.join(FRONTEND_PATH, 'index.html')))
 
 app.get('/favoritos', (req, res) => res.sendFile(path.join(FRONTEND_PATH, 'html/Favoritos.html')));
 
+app.get('/Btc', (req, res) => res.sendFile(path.join(FRONTEND_PATH, 'html/Btc.html')));
+
 app.listen(PORT, () => {
   console.log(`Server rodando na porta ${PORT}`);
 });

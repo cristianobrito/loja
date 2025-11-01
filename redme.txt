@@ -728,3 +728,16 @@ https://api.mercadobitcoin.net/api/v4/docs#tag/Wallet/paths/~1accounts~1{account
 
 =======================================================================
 
+http://localhost:3000/html/Favoritos.html
+
+http://localhost:3000/api/products
+
+http://localhost:8080/?server=db&username=cristiano&db=loja_db&select=products
+
+http://localhost:8080
+
+http://localhost:3000/status
+
+http://localhost:3000/
+
+============================================================================
